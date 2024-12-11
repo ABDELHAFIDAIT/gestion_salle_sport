@@ -6,6 +6,7 @@
     <title>OXYFIT - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    
 </head>
 <body>
     <main class="grid grid-cols-5">
@@ -23,8 +24,8 @@
             </div>
 
             <!-- Manage Activities -->
-            <div class="hidden">
-                <div id="manage-activity" class="flex items-center justify-around py-10">
+            <div class="hidden" id="manage-activity" >
+                <div class="flex items-center justify-around py-10">
                     <button id="btn-add-activity" type="button" class="font-bold py-2 px-6 bg-orange-500 rounded-md transition-all duration-200 hover:px-7">ADD NEW ACTIVITY</button>
                     <div class="relative">
                         <input
@@ -71,8 +72,8 @@
             </div>
 
             <!-- Manage Bookings -->
-            <div class="hidden">
-                <div id="manage-booking" class="flex items-center justify-around py-10">
+            <div class="hidden" id="manage-booking">
+                <div class="flex items-center justify-around py-10">
                     <div class="relative">
                         <input
                             class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -118,8 +119,8 @@
             </div>
 
             <!-- Manage Payment -->
-            <div class="hidden">
-                <div id="manage-payment" class="flex items-center justify-around py-10">
+            <div class="hidden" id="manage-payment">
+                <div class="flex items-center justify-around py-10">
                     <div class="relative">
                         <input
                             class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -163,7 +164,17 @@
                     </div>
                 </div>
             </div>
+
+            <div>
+                <form action="">
+                    
+                </form>
+            </div>
+
         </section>
     </main>
+
+
+    <script src="../public/assets/js/script.js"></script>
 </body>
 </html>

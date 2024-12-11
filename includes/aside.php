@@ -1,9 +1,9 @@
 <aside class="flex flex-col justify-around h-screen bg-black items-center text-white">
     <img class="w-2/3" src="../public/assets/img/logo.png" alt="Logo de OXYFIT">
     <hr class="border border-gary-950 w-[90%] mx-5">
-    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer">Activity Management</h1>
-    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer">Booking Management</h1>
-    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer">Payment Management</h1>
+    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer" id="option-activity">Activity Management</h1>
+    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer" id="option-booking">Booking Management</h1>
+    <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer" id="option-payment">Payment Management</h1>
     <hr class="border border-gary-950 w-[90%] mx-5">
     <h1 class="text-xl font-semibold tarnsition-all duration-500 hover:text-orange-500 hover:scale-105 cursor-pointer">Statistics</h1>
     <div class="flex gap-2 items-center">

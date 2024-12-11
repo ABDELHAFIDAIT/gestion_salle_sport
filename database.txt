@@ -1,0 +1,178 @@
+-- Création de Base de Données
+CREATE DATABASE salle_sport;
+
+-- Utilisation de Base de Données
+USE salle_sport;
+
+
+
+
+
+-- Création des Tables de Base de Données
+CREATE TABLE Membres (
+    id_membre INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(50),
+    prenom VARCHAR(50),
+    email VARCHAR(100),
+    telephone VARCHAR(15)
+);
+
+
+CREATE TABLE Activites (
+    id_activite INT AUTO_INCREMENT PRIMARY KEY,
+    nom_activite VARCHAR(50) NOT NULL UNIQUE,
+    description TEXTUNIQUE,
+    capacite INT,
+    date_debut DATE,
+    date_fin DATE,
+    disponibilite BOOLEAN DEFAULT 1
+);
+
+
+CREATE TABLE Reservations (
+    id_reservation INT AUTO_INCREMENT PRIMARY KEY,
+    id_membre INT NOT NULL,
+    id_activite INT NOT NULL,
+    date_reservation DATE,
+    status_reservation ENUM('Confirmé', 'Annulé') DEFAULT 'Confirmé',
+    FOREIGN KEY (id_membre) REFERENCES Membres(id_membre) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_activite) REFERENCES Activites(id_activite) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE Carte (
+    id_carte INT AUTO_INCREMENT PRIMARY KEY,
+    id_membre INT NOT NULL,
+    numero BIGINT NOT NULL,
+    date_expiration DATE NOT NULL,
+    code_securite INT CHECK (code_securite BETWEEN 000 AND 999),
+    type_carte ENUM('Visa', 'MasterCard') DEFAULT 'Visa',
+    FOREIGN KEY (id_membre) REFERENCES Membres(id_membre)ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+CREATE TABLE Paiement (
+    id_paiement INT AUTO_INCREMENT PRIMARY KEY,
+    id_carte INT NOT NULL,
+    id_reservation INT NOT NULL,
+    date_paiement DATE,
+    etat ENUM('Payé', 'En Attente', 'Annulé') DEFAULT 'En Attente',
+    FOREIGN KEY (id_carte) REFERENCES Carte(id_carte) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_reservation) REFERENCES Reservations(id_reservation) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+
+
+
+-- Ajouts des Données aux différents Tables
+INSERT INTO Membres(nom,prenom,email,telephone)
+VALUES ('Lotfi','Ahmed','ahmed.lotfi@gmail.com','0691766935'),
+       ('Rizki','Laila','laila.rizki@gmail.com','0641563200'),
+       ('Alaoui','Badr','badr.alaoui@gmail.com','0702769912'),
+       ('Fikri','Maryam','maryam.fikri@gmail.com','0714338965');
+
+
+INSERT INTO Activites(nom_activite,description,capacite,date_debut,date_fin)
+VALUES 
+	('Yoga', 'Le yoga combine des postures physiques, des exercices de respiration et de la relaxation pour améliorer la souplesse, réduire le stress et 	renforcer le corps. Il se adapte à tous les âges et niveaux de forme.', 20, '2024-12-06', '2024-12-08'),
+	   
+       
+	('Musculation' , 'La musculation consiste à utiliser des poids, des haltères et des machines pour développer la force et tonifier les muscles. Elle 	convient aussi bien aux débutants qu aux sportifs confirmés grâce à des exercices ajustables selon le niveau.', 25, '2024-12-09', '2024-12-11'),
+       
+       
+	('Cours de Zumba','La Zumba est un cours collectif mêlant danse et fitness, rythmé par des musiques dynamiques et entraînantes. C est une excellente 	activité cardio qui aide à brûler des calories tout en s amusant.', 15, '2024-12-12', '2024-12-13'),
+       
+       
+	('Cycling Indoor','Également appelé spinning, cette activité se pratique sur des vélos fixes dans une ambiance motivante avec des jeux de lumière et 	de musique. Elle améliore l endurance cardiovasculaire et tonifie les jambes.', 18, '2024-12-14', '2024-12-16');
+       
+
+INSERT INTO Reservations(id_membre, id_activite, date_reservation)
+VALUES (1, 2, '2024-12-10'),
+	(3, 1, '2024-12-08'),
+	(4, 3, '2024-12-13');
+
+
+INSERT INTO Carte(id_membre, numero, date_expiration, code_securite, type_carte)
+VALUES (1, '1234567812345678', '2025-12-31', '123', 'Visa'),
+       (1, '8765432187654321', '2026-01-31', '456', 'MasterCard'),
+       (2, '2345678923456789', '2027-05-30', '789', 'Visa'),
+       (3, '3456789034567890', '2025-11-15', '321', 'Visa'),
+       (4, '4567890145678901', '2026-07-19', '654', 'MasterCard'),
+       (4, '5678901256789012', '2028-03-25', '987', 'Visa');
+
+
+INSERT INTO Paiement(id_carte, id_reservation, date_paiement)
+VALUES (2, 1, '2024-12-09'),
+	(4, 2, '2024-12-07'),
+	(5, 3, CURRENT_DATE);
+
+
+
+
+-- Exemples de Modification des Données
+
+-- Exemple 1 : Modifier la disponibilité de l'activité 2
+UPDATE Activites
+SET disponibilite = 0
+WHERE id_activite = 2;
+
+
+-- Exemple 2 : Modifier l'adresse e-mail et le numéro de téléphone du membre nommée 'Maryam'
+UPDATE Membres
+SET email = 'maryam@outlook.fr', 
+    telephone = '0654321987'
+WHERE prenom = 'Maryam';
+
+-- Exemple 3 : Modifier l'etat d'un Paiement
+UPDATE Paiement
+SET etat = 'Annulé'
+WHERE id_paiement = 1;
+
+
+
+
+
+
+-- Exemples de Suppression d'une Données
+
+-- Exemple 1 : Supprimer une réservation annulée
+DELETE FROM Paiement
+WHERE etat = 'Annulé';
+
+-- Exemple 2 : Supprimer une activité qui a dépassé la date actuelle
+DELETE FROM Activites
+WHERE date_fin < CURRENT_DATE;
+
+
+
+
+
+--Exemples des Requetes SELECT
+
+-- Exemple 1 : Récupérer les activités non disponibles avec leur capacité
+SELECT nom_activite, description, capacite
+FROM Activites
+WHERE disponibilite = 0;
+
+-- Exemple 2 : Récupérer le nombre de cartes associées à chaque membre
+SELECT id_membre, COUNT(id_carte) AS nombre_cartes
+FROM Carte
+GROUP BY id_membre;
+
+
+
+
+-- Exemples d'utilisation de JOIN
+
+-- Exemple 1 : Récupérer les informations des réservations avec les noms des membres
+SELECT Reservations.id_reservation, Reservations.date_reservation, Reservations.status_reservation, Membres.nom, Membres.prenom
+FROM Reservations
+JOIN Membres ON Reservations.id_membre = Membres.id_membre;
+
+-- Exemple 2 : Récupérer les activités et le nombre de réservations pour chacune
+SELECT Activites.nom_activite, COUNT(Reservations.id_reservation) AS nombre_reservations
+FROM Activites
+LEFT JOIN Reservations ON Activites.id_activite = Reservations.id_activite
+GROUP BY Activites.id_activite, Activites.nom_activite;
