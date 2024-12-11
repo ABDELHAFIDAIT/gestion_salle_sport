@@ -161,6 +161,11 @@ SELECT id_membre, COUNT(id_carte) AS nombre_cartes
 FROM Carte
 GROUP BY id_membre;
 
+-- Exemple 3 : Récupérer les noms des membres qui contiennent le mot "ik"
+SELECT nom
+FROM Membres
+WHERE nom LIKE '%ik%';
+
 
 
 
@@ -176,3 +181,9 @@ SELECT Activites.nom_activite, COUNT(Reservations.id_reservation) AS nombre_rese
 FROM Activites
 LEFT JOIN Reservations ON Activites.id_activite = Reservations.id_activite
 GROUP BY Activites.id_activite, Activites.nom_activite;
+
+
+
+-- Exemple de Modification d'une contrainte 
+ALTER TABLE Membres
+ADD CONSTRAINT UQ_email UNIQUE (email);
