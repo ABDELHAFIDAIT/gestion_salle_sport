@@ -80,7 +80,7 @@
             <!-- Manage Bookings -->
             <div class="hidden" id="manage-booking">
                 <div class="flex items-center justify-around py-10">
-                    <button id="btn-add-activity" type="button" class="font-bold py-2 px-6 bg-orange-500 rounded-md transition-all duration-200 hover:px-7">ADD NEW BOOKING</button>
+                    <button id="add-new-booking" type="button" class="font-bold py-2 px-6 bg-orange-500 rounded-md transition-all duration-200 hover:px-7">ADD NEW BOOKING</button>
                     <div class="relative">
                         <input
                             class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -177,49 +177,49 @@
                 </div>
             </div>
 
-            <div>
-                <form action="">
-                    
-                </form>
-            </div>
-            
-            <div class="flex justify-center items-center fixed inset-0 bg-black bg-opacity-80">
+            <!-- Add New Booking Form -->
+            <div id="add-form" class="flex hidden justify-center items-center fixed inset-0 bg-black bg-opacity-80">
                 <form action="" class="flex flex-col bg-black text-white py-3 px-10 rounded-md w-[50%] gap-3">
                     <div id="infos-member" class="flex flex-col gap-3">
                         <label class="font-medium" for="last-name">Member Last Name</label>
-                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="last-name" placeholder="Enter the Member's Last Name" required>
+                        <input id="last-name" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="last-name" placeholder="Enter the Member's Last Name" required>
+
                         <label class="font-medium" for="first-name">Member First Name</label>
-                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="first-name" placeholder="Enter the Member's First Name" required>
+                        <input id="first-name" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="first-name" placeholder="Enter the Member's First Name" required>
+
                         <label class="font-medium" for="email">Member Email</label>
-                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="email" placeholder="Enter the Member's Email" required>
+                        <input id="email" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="email" placeholder="Enter the Member's Email" required>
+
                         <label class="font-medium" for="phone">Member Phone Number</label>
-                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="phone" placeholder="Enter the Member's Phone Number" required>
+                        <input id="phone" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="phone" placeholder="Enter the Member's Phone Number" required>
                     </div>
+
                     <div class="flex flex-col gap-3">
                         <label for="select-activity">Choose Activity</label>
-                        <select class="text-black py-1 px-4 font-medium outline-none" name="select-activity">
-                        <?php 
-                            require '../config/db.php';
-                            
-                            $requete = "SELECT nom_activite FROM activites";
-                            $query = mysqli_query($conn,$requete);
+                        <select id="select-activity" class="text-black py-1 px-4 font-medium outline-none" name="select-activity">
+                            <?php 
+                                require '../config/db.php';
+                                
+                                $requete = "SELECT nom_activite FROM activites";
+                                $query = mysqli_query($conn,$requete);
 
-                            while( $fetch =mysqli_fetch_assoc($query)){
-                                echo '<option value="'.$fetch['nom_activite'].'">'.$fetch['nom_activite'].'</option>';
-                            }
-
-                        ?>
+                                while( $fetch =mysqli_fetch_assoc($query)){
+                                    echo '<option value="'.$fetch['nom_activite'].'">'.$fetch['nom_activite'].'</option>';
+                                }
+                            ?>
                         </select>
                     </div>
+
                     <div class="flex flex-col gap-3">
                         <label for="booking-status">Booking Status</label>
-                        <select class="text-black py-1 px-4 font-medium outline-none" name="booking-status">
+                        <select id="booking-status" class="text-black py-1 px-4 font-medium outline-none" name="booking-status">
                             <option value="Confirmé">Confirmé</option>
                             <option value="Annulé">Annulé</option>
                         </select>
                     </div>
+
                     <div class="flex justify-end gap-5 mt-3">
-                        <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105">Save</button>
+                        <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105" type="button">Save</button>
                         <button id="cancel-add" class="font-medium py-1 px-5 border border-white rounded-sm transition-all duration-300 hover:text-black hover:bg-gray-500 hover:border-none" type="button">Annuler</button>
                     </div>
                 </form>
