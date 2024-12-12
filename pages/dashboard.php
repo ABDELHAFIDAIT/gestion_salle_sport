@@ -182,19 +182,48 @@
                     
                 </form>
             </div>
+            
+            <div class="flex justify-center items-center fixed inset-0 bg-black bg-opacity-80">
+                <form action="" class="flex flex-col bg-black text-white py-3 px-10 rounded-md w-[50%] gap-3">
+                    <div id="infos-member" class="flex flex-col gap-3">
+                        <label class="font-medium" for="last-name">Member Last Name</label>
+                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="last-name" placeholder="Enter the Member's Last Name" required>
+                        <label class="font-medium" for="first-name">Member First Name</label>
+                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="first-name" placeholder="Enter the Member's First Name" required>
+                        <label class="font-medium" for="email">Member Email</label>
+                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="email" placeholder="Enter the Member's Email" required>
+                        <label class="font-medium" for="phone">Member Phone Number</label>
+                        <input class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="phone" placeholder="Enter the Member's Phone Number" required>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <label for="select-activity">Choose Activity</label>
+                        <select class="text-black py-1 px-4 font-medium outline-none" name="select-activity">
+                        <?php 
+                            require '../config/db.php';
+                            
+                            $requete = "SELECT nom_activite FROM activites";
+                            $query = mysqli_query($conn,$requete);
 
-            <form action="">
-                <div>
-                    <label for="last-name">Member Last Name</label>
-                    <input type="text" name="last-name" placeholder="Enter the Member Last Name" required>
-                    <label for="first-name">Member First Name</label>
-                    <input type="text" name="first-name" placeholder="Enter the Member First Name" required>
-                    <label for="name">Member Name</label>
-                    <input type="text" name="name" placeholder="Enter the Member Name" required>
-                    <label for="name">Member Name</label>
-                    <input type="text" name="name" placeholder="Enter the Member Name" required>
-                </div>
-            </form>
+                            while( $fetch =mysqli_fetch_assoc($query)){
+                                echo '<option value="'.$fetch['nom_activite'].'">'.$fetch['nom_activite'].'</option>';
+                            }
+
+                        ?>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <label for="booking-status">Booking Status</label>
+                        <select class="text-black py-1 px-4 font-medium outline-none" name="booking-status">
+                            <option value="Confirmé">Confirmé</option>
+                            <option value="Annulé">Annulé</option>
+                        </select>
+                    </div>
+                    <div class="flex justify-end gap-5 mt-3">
+                        <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105">Save</button>
+                        <button id="cancel-add" class="font-medium py-1 px-5 border border-white rounded-sm transition-all duration-300 hover:text-black hover:bg-gray-500 hover:border-none" type="button">Annuler</button>
+                    </div>
+                </form>
+            </div>
 
         </section>
     </main>
