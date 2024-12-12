@@ -69,11 +69,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="mx-5 text-[10px] overflow-x-auto">
+                    <?php
+                            require "read_activities.php";
+                    ?>
+                </div>
             </div>
+            
 
             <!-- Manage Bookings -->
             <div class="hidden" id="manage-booking">
                 <div class="flex items-center justify-around py-10">
+                    <button id="btn-add-activity" type="button" class="font-bold py-2 px-6 bg-orange-500 rounded-md transition-all duration-200 hover:px-7">ADD NEW BOOKING</button>
                     <div class="relative">
                         <input
                             class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -115,6 +122,11 @@
                             </svg>
                         </div>
                     </div>
+                </div>
+                <div class="mx-5 text-[10px] overflow-x-auto">
+                    <?php
+                            require "read_booking.php";
+                    ?>
                 </div>
             </div>
 
@@ -170,6 +182,19 @@
                     
                 </form>
             </div>
+
+            <form action="">
+                <div>
+                    <label for="last-name">Member Last Name</label>
+                    <input type="text" name="last-name" placeholder="Enter the Member Last Name" required>
+                    <label for="first-name">Member First Name</label>
+                    <input type="text" name="first-name" placeholder="Enter the Member First Name" required>
+                    <label for="name">Member Name</label>
+                    <input type="text" name="name" placeholder="Enter the Member Name" required>
+                    <label for="name">Member Name</label>
+                    <input type="text" name="name" placeholder="Enter the Member Name" required>
+                </div>
+            </form>
 
         </section>
     </main>
