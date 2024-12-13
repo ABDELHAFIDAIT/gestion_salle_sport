@@ -76,7 +76,6 @@
                 </div>
             </div>
             
-
             <!-- Manage Bookings -->
             <div class="hidden" id="manage-booking">
                 <div class="flex items-center justify-around py-10">
@@ -130,9 +129,10 @@
                 </div>
             </div>
 
-            <!-- Manage Payment -->
-            <div class="hidden" id="manage-payment">
+            <!-- Manage Members -->
+            <div class="hidden" id="manage-members">
                 <div class="flex items-center justify-around py-10">
+                    <button id="btn-add-member" type="button" class="font-bold py-2 px-6 bg-orange-500 rounded-md transition-all duration-200 hover:px-7">ADD NEW MEMBER</button>
                     <div class="relative">
                         <input
                             class="appearance-none border-2 pl-10 border-gray-300 hover:border-gray-400 transition-colors rounded-md w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:ring-purple-600 focus:border-purple-600 focus:shadow-outline"
@@ -174,6 +174,57 @@
                             </svg>
                         </div>
                     </div>
+                </div>
+                <div class="mx-5 text-[10px] overflow-x-auto">
+                    <?php
+                            require "read_members.php";
+                    ?>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="p-10 flex gap-10 text-white text-2xl font-semibold" id="statistics">
+                <div class="flex flex-col items-center gap-10 p-10 bg-[#000000] flex-1 rounded-md shadow-md shadow-gray-500">
+                    <h1>Total Members</h1>
+                    <h2 class="text-orange-500">
+                        <?php 
+                            require '../config/db.php';
+
+                            $requet = "SELECT COUNT(id_membre) AS count_membre FROM membres";
+                            $query = mysqli_query($conn,$requet);
+                            $rows=mysqli_fetch_assoc($query);
+                            $count = $rows['count_membre'];
+                            echo "$count";
+                        ?>
+                    </h2>
+                </div>
+                <div class="flex flex-col items-center gap-10 p-10 bg-[#000000] flex-1 rounded-md shadow-md shadow-gray-500">
+                    <h1>Total Activities</h1>
+                    <h2 class="text-orange-500">
+                        <?php 
+                            require '../config/db.php';
+
+                            $requet = "SELECT COUNT(id_activite) AS count_activite FROM activites";
+                            $query = mysqli_query($conn,$requet);
+                            $rows=mysqli_fetch_assoc($query);
+                            $count = $rows['count_activite'];
+                            echo "$count";
+                        ?>
+                    </h2>
+                </div>
+                <div class="flex flex-col items-center gap-10 p-10 bg-[#000000] flex-1 rounded-md shadow-md shadow-gray-500">
+                    <h1>Total Bookings</h1>
+                    <h2 class="text-orange-500">
+                        <?php 
+                            require '../config/db.php';
+
+                            $requet = "SELECT COUNT(id_reservation) AS count_reservation FROM reservations";
+                            $query = mysqli_query($conn,$requet);
+                            $rows=mysqli_fetch_assoc($query);
+                            $count = $rows['count_reservation'];
+                            echo "$count";
+                        ?>
+                    </h2>
                 </div>
             </div>
 

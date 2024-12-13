@@ -1,10 +1,12 @@
 const manageActivity = document.getElementById('manage-activity');
 const manageBooking = document.getElementById('manage-booking');
-const managePayment = document.getElementById('manage-payment');
+const manageMembers = document.getElementById('manage-members');
+const statistics = document.getElementById('statistics');
 
 const optionActivity = document.getElementById('option-activity');
 const optionBooking = document.getElementById('option-booking');
-const optionPayment = document.getElementById('option-payment');
+const optionMembers = document.getElementById('option-members');
+const optionStatistics = document.getElementById('option-statistics');
 
 const addForm = document.getElementById('add-form');
 const openPopup = document.getElementById('add-new-booking');
@@ -24,35 +26,53 @@ openPopup.addEventListener('click', function(){
 optionActivity.addEventListener('click', function(){
     optionActivity.classList.add('text-orange-500');
     optionBooking.classList.remove('text-orange-500');
-    optionPayment.classList.remove('text-orange-500');
+    optionMembers.classList.remove('text-orange-500');
+    optionStatistics.classList.remove('text-orange-500');
 
     manageActivity.classList.remove('hidden');
     manageBooking.classList.add('hidden');
-    managePayment.classList.add('hidden');
+    manageMembers.classList.add('hidden');
+    statistics.classList.add('hidden');
 });
 
 
 optionBooking.addEventListener('click', function(){
     optionActivity.classList.remove('text-orange-500');
     optionBooking.classList.add('text-orange-500');
-    optionPayment.classList.remove('text-orange-500');
+    optionMembers.classList.remove('text-orange-500');
+    optionStatistics.classList.remove('text-orange-500');
 
     manageActivity.classList.add('hidden');
     manageBooking.classList.remove('hidden');
-    managePayment.classList.add('hidden');
+    manageMembers.classList.add('hidden');
+    statistics.classList.add('hidden');
 });
 
 
-optionPayment.addEventListener('click', function(){
+optionMembers.addEventListener('click', function(){
     optionActivity.classList.remove('text-orange-500');
     optionBooking.classList.remove('text-orange-500');
-    optionPayment.classList.add('text-orange-500');
+    optionMembers.classList.add('text-orange-500');
+    optionStatistics.classList.remove('text-orange-500');
 
     manageActivity.classList.add('hidden');
     manageBooking.classList.add('hidden');
-    managePayment.classList.remove('hidden');
+    manageMembers.classList.remove('hidden');
+    statistics.classList.add('hidden');
 });
 
+
+optionStatistics.addEventListener('click', function(){
+    optionActivity.classList.remove('text-orange-500');
+    optionBooking.classList.remove('text-orange-500');
+    optionMembers.classList.remove('text-orange-500');
+    optionStatistics.classList.add('text-orange-500');
+
+    manageActivity.classList.add('hidden');
+    manageBooking.classList.add('hidden');
+    manageMembers.classList.add('hidden');
+    statistics.classList.remove('hidden');
+});
 
 
 
@@ -60,11 +80,11 @@ optionPayment.addEventListener('click', function(){
 
 
 
-const form = document.querySelector('form');
-const lastNameInput = document.getElementById('last-name');
-const firstNameInput = document.getElementById('first-name');
-const emailInput = document.getElementById('email');
-const phoneInput = document.getElementById('phone');
+// const form = document.querySelector('form');
+// const lastNameInput = document.getElementById('last-name');
+// const firstNameInput = document.getElementById('first-name');
+// const emailInput = document.getElementById('email');
+// const phoneInput = document.getElementById('phone');
 
 // btnConfirm.addEventListener('click', () => {
 //     let isValid = true;
