@@ -3,7 +3,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_password = "";
-    $db_name = "salle_sport";
+    $db_name = "gestion_salle_sport";
     $conn = "";
 
     try{

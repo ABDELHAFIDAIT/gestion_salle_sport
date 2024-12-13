@@ -24,7 +24,7 @@
 
     
     
-    $requet_3 = "INSERT INTO reservations(id_membre,id_activite,date_reservation) VALUES ('$last_membre_id','$id_activite',CURRENT_DATE)";
+    $requet_3 = "INSERT INTO reservations(id_membre,id_activite,date_reservation) VALUES ('$last_membre_id','$id_activite',CURRENT_TIMESTAMP)";
     $query_3 = mysqli_query($conn, $requet_3);
 
     if(isset($query_3)){

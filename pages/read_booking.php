@@ -11,7 +11,11 @@
 
     include '../config/db.php';
 
-    $requete = "SELECT nom,prenom,nom_activite,date_reservation,status_reservation FROM activites A JOIN reservations R ON A.id_activite=R.id_activite JOIN membres M ON M.id_membre = R.id_membre;";
+    $requete = "SELECT M.id_membre,nom,prenom,nom_activite,date_reservation,status_reservation 
+                FROM activites A 
+                JOIN reservations R ON A.id_activite=R.id_activite 
+                JOIN membres M ON M.id_membre = R.id_membre
+                ORDER BY M.id_membre;";
     $query = mysqli_query($conn,$requete);
 
     while($rows=mysqli_fetch_assoc($query)){
