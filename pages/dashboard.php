@@ -179,7 +179,7 @@
 
             <!-- Add New Booking Form -->
             <div id="add-form" class="flex hidden justify-center items-center fixed inset-0 bg-black bg-opacity-80">
-                <form action="" class="flex flex-col bg-black text-white py-3 px-10 rounded-md w-[50%] gap-3">
+                <form method="POST" action="create_booking.php" class="flex flex-col bg-black text-white py-3 px-10 rounded-md w-[50%] gap-3">
                     <div id="infos-member" class="flex flex-col gap-3">
                         <label class="font-medium" for="last-name">Member Last Name</label>
                         <input id="last-name" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="last-name" placeholder="Enter the Member's Last Name" required>
@@ -210,16 +210,8 @@
                         </select>
                     </div>
 
-                    <div class="flex flex-col gap-3">
-                        <label for="booking-status">Booking Status</label>
-                        <select id="booking-status" class="text-black py-1 px-4 font-medium outline-none" name="booking-status">
-                            <option value="Confirmé">Confirmé</option>
-                            <option value="Annulé">Annulé</option>
-                        </select>
-                    </div>
-
                     <div class="flex justify-end gap-5 mt-3">
-                        <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105" type="button">Save</button>
+                        <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105" type="submit">Save</button>
                         <button id="cancel-add" class="font-medium py-1 px-5 border border-white rounded-sm transition-all duration-300 hover:text-black hover:bg-gray-500 hover:border-none" type="button">Annuler</button>
                     </div>
                 </form>

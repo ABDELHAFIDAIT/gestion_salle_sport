@@ -66,36 +66,36 @@ const firstNameInput = document.getElementById('first-name');
 const emailInput = document.getElementById('email');
 const phoneInput = document.getElementById('phone');
 
-btnConfirm.addEventListener('click', () => {
-    let isValid = true;
+// btnConfirm.addEventListener('click', () => {
+//     let isValid = true;
 
 
-    const nameRegex = /^[a-zA-Z\s]+$/;
-    if (!nameRegex.test(lastNameInput.value)) {
-        alert('Veuillez entrer un nom valide (lettres uniquement).');
-        isValid = false;
-    }
+//     const nameRegex = /^[a-zA-Z\s]+$/;
+//     if (!nameRegex.test(lastNameInput.value)) {
+//         alert('Veuillez entrer un nom valide (lettres uniquement).');
+//         isValid = false;
+//     }
 
-    if (!nameRegex.test(firstNameInput.value)) {
-        alert('Veuillez entrer un prénom valide (lettres uniquement).');
-        isValid = false;
-    }
+//     if (!nameRegex.test(firstNameInput.value)) {
+//         alert('Veuillez entrer un prénom valide (lettres uniquement).');
+//         isValid = false;
+//     }
 
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailInput.value)) {
-        alert('Veuillez entrer une adresse email valide.');
-        isValid = false;
-    }
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (!emailRegex.test(emailInput.value)) {
+//         alert('Veuillez entrer une adresse email valide.');
+//         isValid = false;
+//     }
 
-    const phoneRegex = /^\d{10,15}$/;
-    if (!phoneRegex.test(phoneInput.value)) {
-        alert('Veuillez entrer un numéro de téléphone valide (10 à 15 chiffres).');
-        isValid = false;
-    }
+//     const phoneRegex = /^\d{10,15}$/;
+//     if (!phoneRegex.test(phoneInput.value)) {
+//         alert('Veuillez entrer un numéro de téléphone valide (10 à 15 chiffres).');
+//         isValid = false;
+//     }
 
-    if (isValid) {
-        addForm.classList.add('hidden');
-        addForm.firstElementChild.reset();
-    }
-});
+//     if (isValid) {
+//         addForm.classList.add('hidden');
+//         addForm.firstElementChild.reset();
+//     }
+// });
