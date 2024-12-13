@@ -175,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mx-5 text-[10px] overflow-x-auto">
+                <div class="mx-5 text-[10px] h-[60vh] overflow-y-auto">
                     <?php
                             require "read_members.php";
                     ?>
