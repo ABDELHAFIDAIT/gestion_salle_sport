@@ -76,46 +76,24 @@ optionStatistics.addEventListener('click', function(){
 
 
 
+
+
 //==============================================================================
 
 
 
-// const form = document.querySelector('form');
-// const lastNameInput = document.getElementById('last-name');
-// const firstNameInput = document.getElementById('first-name');
-// const emailInput = document.getElementById('email');
-// const phoneInput = document.getElementById('phone');
-
-// btnConfirm.addEventListener('click', () => {
-//     let isValid = true;
 
 
-//     const nameRegex = /^[a-zA-Z\s]+$/;
-//     if (!nameRegex.test(lastNameInput.value)) {
-//         alert('Veuillez entrer un nom valide (lettres uniquement).');
-//         isValid = false;
-//     }
-
-//     if (!nameRegex.test(firstNameInput.value)) {
-//         alert('Veuillez entrer un prénom valide (lettres uniquement).');
-//         isValid = false;
-//     }
+const addActivityForm = document.getElementById('add-activity-form');
+const openActivityPopup = document.getElementById('btn-add-activity');
+const btnConfirmActivity = document.getElementById('confirm-add-activity');
+const btnCancelActivity = document.getElementById('cancel-add-activity');
 
 
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     if (!emailRegex.test(emailInput.value)) {
-//         alert('Veuillez entrer une adresse email valide.');
-//         isValid = false;
-//     }
+btnCancelActivity.addEventListener('click', function(){
+    addActivityForm.classList.add('hidden');
+});
 
-//     const phoneRegex = /^\d{10,15}$/;
-//     if (!phoneRegex.test(phoneInput.value)) {
-//         alert('Veuillez entrer un numéro de téléphone valide (10 à 15 chiffres).');
-//         isValid = false;
-//     }
-
-//     if (isValid) {
-//         addForm.classList.add('hidden');
-//         addForm.firstElementChild.reset();
-//     }
-// });
+openActivityPopup.addEventListener('click', function(){
+    addActivityForm.classList.remove('hidden');
+});

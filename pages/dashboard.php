@@ -69,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mx-5 text-[10px] overflow-x-auto">
+                <div class="mx-5 text-[10px] h-[60vh] overflow-auto">
                     <?php
                             require "read_activities.php";
                     ?>
@@ -264,6 +264,34 @@
                     <div class="flex justify-end gap-5 mt-3">
                         <button id="confirm-add" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105" type="submit">Save</button>
                         <button id="cancel-add" class="font-medium py-1 px-5 border border-white rounded-sm transition-all duration-300 hover:text-black hover:bg-gray-500 hover:border-none" type="button">Annuler</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <!-- Add New Activity Form -->
+            <div id="add-activity-form" class="flex hidden justify-center items-center fixed inset-0 bg-black bg-opacity-80">
+                <form method="POST" action="create_activity.php" class="flex flex-col bg-black text-white py-3 px-10 rounded-md w-[50%] gap-3">
+                    <div id="infos-member" class="flex flex-col gap-3">
+                        <label class="font-medium" for="activity-name">Activity Name</label>
+                        <input id="activity-namee" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="activity-name" placeholder="Enter the Activity Name" required>
+
+                        <label class="font-medium" for="description">Activity Description</label>
+                        <textarea id="description" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="text" name="description" placeholder="Enter the Description Here ..." required></textarea>
+
+                        <label class="font-medium" for="capacite">Activity Capacite</label>
+                        <input id="capacite" min="0" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="number" name="capacite" required>
+
+                        <label class="font-medium" for="start-date">Start Date</label>
+                        <input id="start-date" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="date" name="start-date" required>
+
+                        <label class="font-medium" for="end-date">End Date</label>
+                        <input id="end-date" class="outline-none text-black py-1 font-medium rounded-sm px-4 placeholder:text-gray-500" type="date" name="end-date" required>
+                    </div>
+
+                    <div class="flex justify-end gap-5 mt-3">
+                        <button id="confirm-add-activity" class="font-medium py-1 px-5 bg-orange-500 text-black transition-all duration-300 rounded-sm hover:scale-105" type="submit">Save</button>
+                        <button id="cancel-add-activity" class="font-medium py-1 px-5 border border-white rounded-sm transition-all duration-300 hover:text-black hover:bg-gray-500 hover:border-none" type="button">Annuler</button>
                     </div>
                 </form>
             </div>
